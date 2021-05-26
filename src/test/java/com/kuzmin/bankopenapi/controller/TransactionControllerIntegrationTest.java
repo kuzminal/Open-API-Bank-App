@@ -29,14 +29,13 @@ public class TransactionControllerIntegrationTest {
 
     @Test
     void getAllTransactionByAccNumber() throws Exception {
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/transactions")
-                .param("accountNumber", "abc")
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/transactions/1234567")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
         ObjectMapper mapper = new ObjectMapper();
         List<Transaction> myObjects = mapper.readValue(result.getResponse().getContentAsString(), new TypeReference<List<Transaction>>() {
         });
-        assertEquals(myObjects, transactionService.findAllByAccountNumber("abc"));
+        assertEquals(myObjects, transactionService.findAllByAccountNumber(1234567));
     }
 }

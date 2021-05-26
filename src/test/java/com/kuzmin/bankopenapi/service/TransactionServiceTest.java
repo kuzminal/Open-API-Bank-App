@@ -16,6 +16,6 @@ public class TransactionServiceTest {
     @Test
     @DisplayName("Test List Elements")
     public void ifListElementsGreaterThanZero() {
-        assertTrue(transactionService.findAllByAccountNumber("1234").size() > 0);
+        assertTrue(transactionService.findAllByAccountNumber(1234567).size() > 0);
     }
 }
