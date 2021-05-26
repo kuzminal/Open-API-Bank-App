@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@NoArgsConstructor
 public class TransactionController {
-    private TransactionService transactionService;
+    private final TransactionService transactionService;
 
     public TransactionController(TransactionService transactionService) {
         this.transactionService = transactionService;
