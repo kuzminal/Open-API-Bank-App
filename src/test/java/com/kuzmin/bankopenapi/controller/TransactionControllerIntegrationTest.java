@@ -2,7 +2,7 @@ package com.kuzmin.bankopenapi.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kuzmin.bankopenapi.model.Transaction;
+import com.kuzmin.bankopenapi.entity.Transaction;
 import com.kuzmin.bankopenapi.service.TransactionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

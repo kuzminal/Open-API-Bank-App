@@ -1,7 +1,18 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url "https://repo1.maven.org/maven2" }
+    }
+    dependencies {
+        classpath "org.openapitools:openapi-generator-gradle-plugin:5.1.1"
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.5.0'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id "org.openapi.generator" version "5.1.1"
 }
 
 group = 'com.kuzmin'
@@ -20,6 +31,9 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "io.springfox:springfox-boot-starter:3.0.0"
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    implementation group: 'org.threeten', name: 'threetenbp', version: '1.5.1'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -28,6 +42,22 @@ dependencies {
     testImplementation group: 'io.rest-assured', name: 'json-path', version: '4.4.0'
 }
 
+openApiGenerate {
+    generatorName.set("spring")
+
+    inputSpec.set("$rootDir/src/main/resources/account-info-openapi.yaml")
+    outputDir.set("$buildDir/generated")
+
+    apiPackage.set("com.kuzmin.bankopenapi.api")
+    modelPackage.set("com.kuzmin.bankopenapi.model")
+    skipValidateSpec.set(true)
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+}
+
 test {
     useJUnitPlatform()
 }
+
+apply plugin: 'org.openapi.generator'

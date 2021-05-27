@@ -1,9 +1,8 @@
 package com.kuzmin.bankopenapi.service;
 
-import com.kuzmin.bankopenapi.model.Transaction;
+import com.kuzmin.bankopenapi.entity.Transaction;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service

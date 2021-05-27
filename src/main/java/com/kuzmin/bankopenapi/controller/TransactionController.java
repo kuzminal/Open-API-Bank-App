@@ -1,8 +1,7 @@
 package com.kuzmin.bankopenapi.controller;
 
-import com.kuzmin.bankopenapi.model.Transaction;
+import com.kuzmin.bankopenapi.entity.Transaction;
 import com.kuzmin.bankopenapi.service.TransactionService;
-import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
